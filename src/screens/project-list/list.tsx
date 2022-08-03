@@ -14,10 +14,13 @@ import {
 import { Project } from "types/project";
 import { User } from "types/user";
 
+// 为了扩展Table组件，可以将更多的属性直接传给Table
+// ListProps由TableProps和users组成
 interface ListProps extends TableProps<Project> {
   users: User[];
 }
 
+// 这里的 ...props实际上是传给Table的属性
 export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject(useProjectsQueryKey());
   const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });

@@ -5,16 +5,7 @@ export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 export const isVoid = (value: unknown) =>
   value === undefined || value === null || value === "";
 
-// let a: object
-// a = {name: 'jack'}
-// a = () => {
-// }
-// a = new RegExp('')
-//
-// let b: { [key: string]: unknown }
-// b = {name: 'Jack'}
-// b = () => {}
-// 在一个函数里，改变传入的对象本身是不好的
+// Object实际上是一个对象类型的数据，但是定义成键值对的目的是因为正则，函数等的类型也可以写作对象类型，所以写成了更具体的键值对的形式
 export const cleanObject = (object: { [key: string]: unknown }) => {
   // Object.assign({}, object)
   const result = { ...object };

@@ -1,6 +1,7 @@
 import React from "react";
 import { ProjectListScreen } from "screens/project-list";
 import { useAuth } from "context/auth-context";
+// 以SVG的形式引入图片，这样可以自定义样式
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import styled from "@emotion/styled";
 import { ButtonNoPadding, Row } from "components/lib";

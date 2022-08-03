@@ -7,6 +7,7 @@ interface State<D> {
   stat: "idle" | "loading" | "error" | "success";
 }
 
+// 一开始默认的stat
 const defaultInitialState: State<null> = {
   stat: "idle",
   data: null,

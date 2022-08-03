@@ -41,9 +41,10 @@ export const RegisterScreen = ({
       onError(new Error("请确认两次输入的密码相同"));
       return;
     }
+    // try...catch不会等待run执行完再捕获错误，所以要加async和await
     try {
       await run(register(values));
-    } catch (e) {
+    } catch (e:any) {
       onError(e);
     }
   };
