@@ -24,8 +24,6 @@ import { ProjectPopover } from "components/project-popover";
  *
  */
 
-// prop drilling
-
 export const AuthenticatedApp = () => {
   return (
     <Container>
@@ -85,7 +83,6 @@ const User = () => {
   );
 };
 
-// temporal dead zone(暂时性死区)
 const Container = styled.div`
   display: grid;
   grid-template-rows: 6rem 1fr;
