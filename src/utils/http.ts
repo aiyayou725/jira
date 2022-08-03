@@ -5,6 +5,7 @@ import { useCallback } from "react";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
+// RequestInit是fetch官方的定义的配置选项的类型，token和data开发者需要上传的数据
 interface Config extends RequestInit {
   token?: string;
   data?: object;
@@ -22,7 +23,7 @@ export const http = async (
     },
     ...customConfig,
   };
-
+  // post和get请求参数设置的方式不一样
   if (config.method.toUpperCase() === "GET") {
     endpoint += `?${qs.stringify(data)}`;
   } else {
@@ -33,6 +34,7 @@ export const http = async (
   return window
     .fetch(`${apiUrl}/${endpoint}`, config)
     .then(async (response) => {
+      // 未登录或token失效
       if (response.status === 401) {
         await auth.logout();
         window.location.reload();
@@ -51,10 +53,10 @@ export const http = async (
 // return typeof 1 === 'number'
 
 // TS 中的typeof，是在静态环境运行的
-// return (...[endpoint, config]: Parameters<typeof http>) =>
+// 以上面的http方法为基础，自动携带token的hook（因为http里面需要手动传入token）
+// 函数里要使用其他hook那么函数本身必须是一个hook
 export const useHttp = () => {
   const { user } = useAuth();
-  // utility type 的用法：用泛型给它传入一个其他类型，然后utility type对这个类型进行某种操作
   return useCallback(
     (...[endpoint, config]: Parameters<typeof http>) =>
       http(endpoint, { ...config, token: user?.token }),
@@ -62,38 +64,4 @@ export const useHttp = () => {
   );
 };
 
-// 类型别名、Utility Type 讲解
-// 联合类型
-let myFavoriteNumber: string | number;
-myFavoriteNumber = "seven";
-myFavoriteNumber = 7;
-// TS2322: Type '{}' is not assignable to type 'string | number'.
-// myFavoriteNumber = {}
-let jackFavoriteNumber: string | number;
 
-// 类型别名在很多情况下可以和interface互换
-// interface Person {
-//   name: string
-// }
-// type Person = { name: string }
-// const xiaoMing: Person = {name: 'xiaoming'}
-
-// 类型别名, interface 在这种情况下没法替代type
-type FavoriteNumber = string | number;
-let roseFavoriteNumber: FavoriteNumber = "6";
-
-// interface 也没法实现Utility type
-type Person = {
-  name: string;
-  age: number;
-};
-const xiaoMing: Partial<Person> = {};
-const shenMiRen: Omit<Person, "name" | "age"> = {};
-type PersonKeys = keyof Person;
-type PersonOnlyName = Pick<Person, "name" | "age">;
-type Age = Exclude<PersonKeys, "name">;
-
-// Partial 的实现
-type Partial<T> = {
-  [P in keyof T]?: T[P];
-};

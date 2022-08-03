@@ -39,6 +39,7 @@ export const List = ({ users, ...props }: ListProps) => {
         },
         {
           title: "名称",
+          // 按中文字符排序
           sorter: (a, b) => a.name.localeCompare(b.name),
           render(value, project) {
             return <Link to={String(project.id)}>{project.name}</Link>;

@@ -4,20 +4,6 @@ import { Form, Input } from "antd";
 import { LongButton } from "unauthenticated-app/index";
 import { useAsync } from "utils/use-async";
 
-// interface Base {
-//   id: number
-// }
-//
-// interface Advance extends Base {
-//   name: string
-// }
-//
-// const test = (p: Base) => {
-// }
-//
-// // 鸭子类型(duck typing)：面向接口编程 而不是 面向对象编程
-// const a = {id: 1, name: 'jack'}
-// test(a)
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const LoginScreen = ({
@@ -35,7 +21,7 @@ export const LoginScreen = ({
   }) => {
     try {
       await run(login(values));
-    } catch (e) {
+    } catch (e:any) {
       onError(e);
     }
   };

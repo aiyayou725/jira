@@ -12,6 +12,8 @@ interface AuthForm {
   password: string;
 }
 
+// 去localStorage中找token，获取用户信息，获取之后把他给setUser,为了在刷新的时候保持登录页面，
+// 因为判断用户有没有登录用的是user，而user初始化为null
 const bootstrapUser = async () => {
   let user = null;
   const token = auth.getToken();

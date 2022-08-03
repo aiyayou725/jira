@@ -1,4 +1,5 @@
 // 在真实环境中，如果使用firebase这种第三方auth服务的话，本文件不需要开发者开发
+// 用于处理用户信息的token，这里保存在localStorage中
 
 import { User } from "types/user";
 

@@ -10,6 +10,7 @@ import { useDocumentTitle } from "utils";
 import { ErrorBox } from "components/lib";
 
 export const UnauthenticatedApp = () => {
+  // 切换登录注册的状态
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
