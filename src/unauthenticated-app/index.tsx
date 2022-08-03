@@ -37,6 +37,7 @@ export const UnauthenticatedApp = () => {
   );
 };
 
+// html自带的标签使用styled.xxx  不是自带的组件携程styled（xxx）
 export const LongButton = styled(Button)`
   width: 100%;
 `;
