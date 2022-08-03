@@ -14,6 +14,7 @@ const defaultInitialState: State<null> = {
   error: null,
 };
 
+// 因为loading时会消化错误，但是有时候想使用error所以设置一个配置项，时loading时的error能被抛出
 const defaultConfig = {
   throwOnError: false,
 };

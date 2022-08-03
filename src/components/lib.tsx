@@ -33,12 +33,14 @@ const FullPage = styled.div`
   align-items: center;
 `;
 
+// 加载列表时的全页面加载loading状态
 export const FullPageLoading = () => (
   <FullPage>
     <Spin size={"large"} />
   </FullPage>
 );
 
+// 当加载列表失败的时候会回退到登录页面，这个组件的作用是给用户一个提示信息
 export const FullPageErrorFallback = ({ error }: { error: Error | null }) => (
   <FullPage>
     <DevTools />

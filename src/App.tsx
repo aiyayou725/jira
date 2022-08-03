@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* 错误边界处理，如果发生了错误就会回到 FullPageErrorFallback 页面*/}
       <ErrorBoundary fallbackRender={FullPageErrorFallback}>
         {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
       </ErrorBoundary>
