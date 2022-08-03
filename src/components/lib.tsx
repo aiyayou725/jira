@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Spin, Typography } from "antd";
 import { DevTools } from "jira-dev-tool";
 
+// flex布局常用所以把他封装成一个组件，同时，组件的一些样式配置可以通过参数传进来
 export const Row = styled.div<{
   gap?: number | boolean;
   between?: boolean;
