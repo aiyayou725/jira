@@ -20,6 +20,7 @@ const defaultConfig = {
 };
 
 const useSafeDispatch = <T>(dispatch: (...args: T[]) => void) => {
+  // 判断组件是在渲染还是在卸载 如果是在卸载就不改变数据了，防止在请求数据过程中卸载页面报错的情况
   const mountedRef = useMountedRef();
   return useCallback(
     (...args: T[]) => (mountedRef.current ? dispatch(...args) : void 0),

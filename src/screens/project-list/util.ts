@@ -6,6 +6,7 @@ import { useProject } from "utils/project";
 export const useProjectsSearchParams = () => {
   const [param, setParam] = useUrlQueryParam(["name", "personId"]);
   return [
+    // 为了解决无限循环的问题
     useMemo(
       () => ({ ...param, personId: Number(param.personId) || undefined }),
       [param]
