@@ -17,6 +17,7 @@ export const ProjectScreen = () => {
     <Container>
       <Aside>
         <Menu mode={"inline"} selectedKeys={[routeType]}>
+          {/* 如果to后面的路径写成/kanban会默认跟路由localhost：3000/kanban */}
           <Menu.Item key={"kanban"}>
             <Link to={"kanban"}>看板</Link>
           </Menu.Item>
@@ -31,6 +32,7 @@ export const ProjectScreen = () => {
           <Route path={"/kanban"} element={<KanbanScreen />} />
           {/*projects/:projectId/epic*/}
           <Route path={"/epic"} element={<EpicScreen />} />
+          {/* 如果上面两个都匹配不到跳转到看板页面 */}
           <Navigate to={window.location.pathname + "/kanban"} replace={true} />
         </Routes>
       </Main>

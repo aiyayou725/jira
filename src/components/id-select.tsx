@@ -2,8 +2,10 @@ import React from "react";
 import { Raw } from "types";
 import { Select } from "antd";
 
+// 先获取Select组件全部的属性
 type SelectProps = React.ComponentProps<typeof Select>;
 
+// 由于SelectProps中有options属性，所以会和自己定义的部分产生冲突，所以删掉
 interface IdSelectProps
   extends Omit<SelectProps, "value" | "onChange" | "options"> {
   value?: Raw | null | undefined;

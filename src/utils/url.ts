@@ -10,6 +10,7 @@ export const useUrlQueryParam = <K extends string>(keys: K[]) => {
   const setSearchParams = useSetUrlSearchParam();
   const [stateKeys] = useState(keys);
   return [
+    // 读取URL的参数值
     useMemo(
       () =>
         subset(Object.fromEntries(searchParams), stateKeys) as {
@@ -17,10 +18,9 @@ export const useUrlQueryParam = <K extends string>(keys: K[]) => {
         },
       [searchParams, stateKeys]
     ),
+    // 改变URL的参数值
     (params: Partial<{ [key in K]: unknown }>) => {
       return setSearchParams(params);
-      // iterator
-      // iterator: https://codesandbox.io/s/upbeat-wood-bum3j?file=/src/index.js
     },
   ] as const;
 };
@@ -28,6 +28,7 @@ export const useUrlQueryParam = <K extends string>(keys: K[]) => {
 export const useSetUrlSearchParam = () => {
   const [searchParams, setSearchParam] = useSearchParams();
   return (params: { [key in string]: unknown }) => {
+    // Object.fromEntries读取当前URL参数变成一个普通的对象
     const o = cleanObject({
       ...Object.fromEntries(searchParams),
       ...params,
