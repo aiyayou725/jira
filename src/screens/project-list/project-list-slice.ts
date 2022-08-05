@@ -1,10 +1,10 @@
+// 管理project list的相关状态
 import { createSlice } from "@reduxjs/toolkit"
 import { RootState } from "store";
 
 interface State {
   projectModalOpen: boolean;
 }
-
 const initialState: State = {
   projectModalOpen: false
 }
