@@ -57,6 +57,7 @@ export const useProject = (id?: number) => {
   return useQuery<Project>(
     ["project", { id }],
     () => client(`projects/${id}`),
+    // 第三个参数的意思是只有在id有值的时候才会触发请求获取项目详情
     {
       enabled: Boolean(id),
     }

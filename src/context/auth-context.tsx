@@ -1,5 +1,8 @@
 import React, { ReactNode } from "react";
+// auth-provider 中提供了登录和注册的方法，
+// 登录成功服务端会返回一个token，把token保存在localStorage中，注册时也基本同理
 import * as auth from "auth-provider";
+// http 是一个函数，他可以传入相关的配置，根据配置信息发送GET或POST HTTP请求返回响应的结果
 import { http } from "utils/http";
 import { useMount } from "utils";
 import { useAsync } from "utils/use-async";

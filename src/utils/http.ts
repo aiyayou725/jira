@@ -11,6 +11,8 @@ interface Config extends RequestInit {
   data?: object;
 }
 
+// 根据不同的http请求配置参数，如果是get请求就把传入的参数加到URL后面
+// 如果是POST请求，就把数据放在body里面
 export const http = async (
   endpoint: string,
   { data, token, headers, ...customConfig }: Config = {}
