@@ -4,7 +4,9 @@ import React, { ReactNode } from "react";
 import * as auth from "auth-provider";
 // http 是一个函数，他可以传入相关的配置，根据配置信息发送GET或POST HTTP请求返回响应的结果
 import { http } from "utils/http";
+// 组件一开始加载时执行的函数
 import { useMount } from "utils";
+// 返回请求数据时对应的状态一个通用的请求和retry的方法
 import { useAsync } from "utils/use-async";
 import { FullPageErrorFallback, FullPageLoading } from "components/lib";
 import { User } from "types/user";
@@ -19,6 +21,7 @@ interface AuthForm {
 // 因为判断用户有没有登录用的是user，而user初始化为null
 const bootstrapUser = async () => {
   let user = null;
+  // 从localStorage中读取token
   const token = auth.getToken();
   if (token) {
     const data = await http("me", { token });
@@ -53,6 +56,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // point free
   const login = (form: AuthForm) => auth.login(form).then(setUser);
   const register = (form: AuthForm) => auth.register(form).then(setUser);
+  // 退出登录时把用react-query缓存的数据清除
   const logout = () =>
     auth.logout().then(() => {
       setUser(null);

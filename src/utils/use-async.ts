@@ -1,4 +1,5 @@
 import { useCallback, useReducer, useState } from "react";
+// 如果组件还没有挂载或已经卸载返回false
 import { useMountedRef } from "utils/index";
 
 interface State<D> {
@@ -40,6 +41,8 @@ export const useAsync = <D>(
       ...initialState,
     }
   );
+
+  // 如果是页面在卸载过程返回的是void
   const safeDispatch = useSafeDispatch(dispatch);
   // useState直接传入函数的含义是：惰性初始化；所以，要用useState保存函数，不能直接传入函数
   // https://codesandbox.io/s/blissful-water-230u4?file=/src/App.js

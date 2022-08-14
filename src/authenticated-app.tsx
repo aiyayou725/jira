@@ -1,9 +1,11 @@
 import React from "react";
 import { ProjectListScreen } from "screens/project-list";
+// useAuth是用来保存用户信息的全局上下文
 import { useAuth } from "context/auth-context";
 // 以SVG的形式引入图片，这样可以自定义样式
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import styled from "@emotion/styled";
+// 基于antd提供的组件封装的常见的高阶组件
 import { ButtonNoPadding, Row } from "components/lib";
 import { Button, Dropdown, Menu } from "antd";
 import { Navigate, Route, Routes } from "react-router";

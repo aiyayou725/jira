@@ -2,8 +2,10 @@ import React from "react";
 import { SearchPanel } from "screens/project-list/search-panel";
 import { List } from "screens/project-list/list";
 import { useDebounce, useDocumentTitle } from "utils";
+// 获取URL参数中的查询参数，然后把他设置为react-query的查询参数，获取对应的具体列表项
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
+// useProjectModal返回控制模态框打开关闭的函数以及如果是编辑项目时还会传入项目的id
 import {
   useProjectModal,
   useProjectsSearchParams,
@@ -20,8 +22,6 @@ import {
 // 基本类型，可以放到依赖里；组件状态，可以放到依赖里；非组件状态的对象，绝不可以放到依赖里
 // https://codesandbox.io/s/keen-wave-tlz9s?file=/src/App.js
 
-// 使用 JS 的同学，大部分的错误都是在 runtime(运行时) 的时候发现的
-// 我们希望，在静态代码中，就能找到其中的一些错误 -> 强类型
 export const ProjectListScreen = () => {
   useDocumentTitle("项目列表", false);
 

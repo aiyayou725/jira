@@ -18,6 +18,7 @@ export const cleanObject = (object: { [key: string]: unknown }) => {
   return result;
 };
 
+// 在组件一开始加载时执行
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
@@ -59,6 +60,7 @@ export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
   }, [keepOnUnmount, oldTitle]);
 };
 
+// window.location.origin 表示当前页面的URL源
 export const resetRoute = () => (window.location.href = window.location.origin);
 
 /**
